@@ -1,0 +1,26 @@
+{
+  "name": "Stranger_Things",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesB504/Stranger-ThIngs-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesB504/Stranger-ThIngs-Project/issues"
+  },
+  "homepage": "https://github.com/JamesB504/Stranger-ThIngs-Project#readme",
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^4.0.3"
+  }
+}
