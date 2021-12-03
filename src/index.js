@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Register } from "./components";
 
 const App = () => {
-  return <div>Hello World</div>;
+  return (
+    <>
+      <h1>Stranger's Things</h1>
+
+      <Route path="/register">
+        <Register />
+      </Route>
+    </>
+  );
 };
 
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  document.getElementById("app")
+);
