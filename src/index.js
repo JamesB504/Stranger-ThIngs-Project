@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { Register } from "./components";
+import { AccountForm } from "./components";
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
       <h1>Stranger's Things</h1>
 
       <Route path="/register">
-        <Register />
+        <AccountForm />
       </Route>
     </>
   );
