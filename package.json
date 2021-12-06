@@ -1,5 +1,5 @@
 {
-  "name": "Stranger_Things",
+  "name": "2021-11-27",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,16 +7,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/JamesB504/Stranger-ThIngs-Project.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JamesB504/Stranger-ThIngs-Project/issues"
-  },
   "dependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
