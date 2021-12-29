@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import { callApi } from "./api";
-import { AccountForm, Posts, SinglePost, NewPostForm } from "./components";
+import {
+  AccountForm,
+  Posts,
+  SinglePost,
+  NewPostForm,
+  Profile,
+} from "./components";
 
 const App = () => {
   const [token, setToken] = useState("");
@@ -43,17 +49,33 @@ const App = () => {
     const posts = await fetchPosts();
     setPosts(posts);
   }, []);
-
+  const handleclickButton = () => {
+    setToken("");
+    localStorage.removeItem("token");
+    setUserData({});
+  };
   return (
     <>
       <h1>Stranger's Things</h1>
       <Link to="/posts/new">Add A Post</Link>
+      <Link to="/posts">ALl Posts</Link>
+      <Link to="/login">Login</Link>
+      <Link to="/" onClick={handleclickButton}>
+        Log Out
+      </Link>
+      <Link to="/Profile">Profiile</Link>
+
       <Switch>
         <Route exact path="/">
           {userData.username && <div>Hello {userData.username}</div>}
         </Route>
         <Route exact path="/posts">
-          <Posts posts={posts} />
+          <Posts
+            posts={posts}
+            username={userData.username}
+            token={token}
+            setPosts={setPosts}
+          />
         </Route>
         <Route path="/posts/new">
           <NewPostForm
@@ -87,6 +109,9 @@ const App = () => {
             setToken={setToken}
             setUserData={setUserData}
           />
+        </Route>
+        <Route path="/Profile">
+          <Profile userData={userData} token={token} />
         </Route>
       </Switch>
     </>

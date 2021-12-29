@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { callApi } from "../api";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams, Redirect } from "react-router-dom";
 
 const NewPostForm = ({ token, setPosts, posts, action }) => {
   const history = useHistory();
@@ -61,6 +61,7 @@ const NewPostForm = ({ token, setPosts, posts, action }) => {
       setNewPost({ ...newPost, [property]: event.target.value });
     }
   };
+  if (!token) return <Redirect to="/posts" />;
 
   return (
     <>

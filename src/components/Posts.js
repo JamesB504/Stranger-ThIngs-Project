@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { callApi } from "../api";
 
 const styles = {
   searchContainer: {
@@ -31,9 +32,20 @@ const postMatches = (post, searchTerm) => {
   }
 };
 
-const Posts = ({ posts }) => {
+const Posts = ({ posts, username, setPosts, token }) => {
   const history = useHistory();
   const [searchTerm, setSearchTerm] = useState("");
+
+  const handledelete = async (event, postId) => {
+    event.preventDefault();
+    await callApi({
+      url: `/posts/${postId}`,
+      method: "DELETE",
+      token,
+    });
+    const keepPost = posts.filter((post) => postId !== post._id);
+    setPosts(keepPost);
+  };
 
   const postsToDisplay = posts.filter((post) => postMatches(post, searchTerm));
   return (
@@ -61,6 +73,11 @@ const Posts = ({ posts }) => {
             <button onClick={() => history.push(`/posts/${post._id}`)}>
               View Post
             </button>
+            {post.author.username === username ? (
+              <button onClick={(event) => handledelete(event, post._id)}>
+                Delete
+              </button>
+            ) : null}
           </div>
         ))
       ) : (
