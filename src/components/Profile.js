@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from "react";
 
-const Profile = ({ userData, token }) => {
+const Profile = ({ userData, token, setUserData, fetchUserData }) => {
   useEffect(() => {
-    setMessages(userData.messages);
-    console.log(userData);
+    if (userData.messages) {
+      setMessages(userData.messages);
+    }
     if (userData.posts) {
       setPosts(userData.posts);
     }
   }, [userData]);
   const [posts, setPosts] = useState([]);
   const [messages, setMessages] = useState([]);
-
+  useEffect(async () => {
+    const data = await fetchUserData(token);
+    if (data && data.username) {
+      setUserData(data);
+    }
+  }, []);
   return (
     <div>
+      {messages.map((message) => (
+        <div key={message._id} style={{ border: "1px solid black" }}>
+          <div>Messsage by:{message.fromUser.username}</div>
+          <div>Description;{message.content}</div>
+        </div>
+      ))}
       {posts.length &&
         posts.map((post) => (
           <div key={post._id} style={{ border: "1px solid black" }}>

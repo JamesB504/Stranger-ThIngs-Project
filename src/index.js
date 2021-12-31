@@ -94,7 +94,7 @@ const App = () => {
           />
         </Route>
         <Route path="/posts/:postId">
-          <SinglePost posts={posts} />
+          <SinglePost posts={posts} token={token} />
         </Route>
         <Route path="/register">
           <AccountForm
@@ -111,7 +111,12 @@ const App = () => {
           />
         </Route>
         <Route path="/Profile">
-          <Profile userData={userData} token={token} />
+          <Profile
+            userData={userData}
+            token={token}
+            setUserData={setUserData}
+            fetchUserData={fetchUserData}
+          />
         </Route>
       </Switch>
     </>
